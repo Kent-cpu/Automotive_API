@@ -1,22 +1,23 @@
 package com.example.automotive_api.models
-
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
+
 @Entity
-class User {
+@Table(name = "person")
+class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0
 
-    @Column
+    @Column(name="name")
     var name = ""
 
-    @Column(unique = true)
+    @Column(name = "email", unique = true)
     var email = ""
 
-    @Column
+    @Column(name = "password")
     var password = ""
         @JsonIgnore
         get() = field
